@@ -9,3 +9,17 @@ class Node(object):
         while current.next:
             current = current.next
         current.next = node
+
+    def delete_node(self, data):
+        node = self
+
+        if node.data == data:
+            return node.next
+
+        while node.next:
+            if node.next.data == data:
+                node.next = node.next.next
+                return self
+            node = node.next
+
+        return self
