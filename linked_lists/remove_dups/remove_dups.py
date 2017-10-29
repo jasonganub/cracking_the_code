@@ -1,17 +1,21 @@
-folder = __import__('linked_lists')
+from linked_lists.linked_list import LinkedList
 
 
-def remove_dups(node):
-    nodes = {}
+def remove_dups(ll):
+    if ll.head is None:
+        return
 
-    # make current head
+    current = ll.head
+    seen = set([current.value])
+    while current.next:
+        if current.next.value in seen:
+            current.next = current.next.next
+        else:
+            seen.add(current.next.value)
+            current = current.next
 
-    # check if the node data is in the hash
-    # if it is, remove it so keep track of current and current.next
-    # if it's not, add it to hash
+    return ll
 
-    # return head
-    return "YAY"
 
 ll = LinkedList()
 ll.generate(100, 0, 9)
